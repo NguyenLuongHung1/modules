@@ -28,7 +28,7 @@
         <settings>
             <submitUrl path="office/department/save"/>
         </settings>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="department_form_data_source">
+        <dataProvider class="Dtn\Office\Model\Department\DataProvider" name="department_form_data_source">
             <settings>
                 <requestFieldName>entity_id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>

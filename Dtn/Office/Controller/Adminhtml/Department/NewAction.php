@@ -1,25 +1,13 @@
 <?php
-/**
- *
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
+
 namespace Dtn\Office\Controller\Adminhtml\Department;
 
-/**
- * Create CMS page action.
- */
-class NewAction extends \Magento\Backend\App\Action
+use Magento\Framework\App\Action\HttpGetActionInterface;
+
+class NewAction extends \Magento\Backend\App\Action implements HttpGetActionInterface
 {
-    /**
-     * @var \Magento\Backend\Model\View\Result\Forward
-     */
     protected $resultForwardFactory;
 
-    /**
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
-     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
@@ -28,11 +16,6 @@ class NewAction extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
-    /**
-     * Forward to edit
-     *
-     * @return \Magento\Backend\Model\View\Result\Forward
-     */
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Forward $resultForward */

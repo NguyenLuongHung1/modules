@@ -14,20 +14,26 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
      */
     public function getButtonData()
     {
-
         return [
             'label' => __('Save'),
             'class' => 'save primary',
             'data_attribute' => [
-                'mage-init' => ['button' => ['event' => 'save']],
+                'mage-init' => [
+                    'buttonAdapter' => [
+                        'actions' => [
+                            [
+                                'targetName' => 'office_department_form.office_department_form',
+                                'actionName' => 'save',
+                                'params' => [
+                                    false
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
                 'form-role' => 'save',
             ],
             'sort_order' => 30,
         ];
-    }
-
-    public function getBackUrl()
-    {
-        return $this->getUrl('*/*/save');
     }
 }

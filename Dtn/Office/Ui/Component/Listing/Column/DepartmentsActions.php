@@ -3,7 +3,7 @@
  * Copyright © 2015 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Pfay\Contacts\Ui\Component\Listing\Column;
+namespace Dtn\Office\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -13,7 +13,7 @@ use Magento\Framework\UrlInterface;
 /**
  * Class DepartmentActions
  */
-class ContactsActions extends Column
+class DepartmentsActions extends Column
 {
     /**
      * @var UrlInterface
@@ -51,15 +51,16 @@ class ContactsActions extends Column
                 $item[$this->getData('name')]['edit'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'office/department/edit',
-                        ['id' => $item['entity_id']]
+                        ['entity_id' => $item['entity_id']]
                     ),
                     'label' => __('Edit'),
                     'hidden' => false,
+                    '__disableTmpl' => true,
                 ];
                 $item[$this->getData('name')]['delete'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'office/department/delete',
-                        ['id' => $item['entity_id']]
+                        ['entity_id' => $item['entity_id']]
                     ),
                     'label' => __('Delete'),
                     'hidden' => false,

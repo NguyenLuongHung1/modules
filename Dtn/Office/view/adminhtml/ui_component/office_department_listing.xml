@@ -96,5 +96,12 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
+        <actionsColumn name="actions" class="Dtn\Office\Ui\Component\Listing\Column\DepartmentsActions">
+            <settings>
+                <indexField>page_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>
