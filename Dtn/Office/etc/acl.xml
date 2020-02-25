@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Dtn_Office::dtn" title="DTN" sortOrder="51">
+                    <resource id="Dtn_Office::department" title="Department" sortOrder="10"/>
+                    <resource id="Dtn_Office::employee" title="Employee" sortOrder="30" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

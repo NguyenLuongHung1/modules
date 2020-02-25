@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @var \Dtn\Office\Block\Index $block
+ */
+
+
+echo $block->sayHello();
+
+?>
+
+<html>
+
+<body>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date Of Birth</th>
+            <th>Working Years</th>
+            <th>Salary</th>
+            <th>Note</th>
+        </tr>
+        <tr>
+            <?php
+            foreach ($block->getEmployees() as $employee) {
+                echo '<tr>
+                        <td>' . $employee->getId() . '</td>
+                        <td>' . $employee->getDepartment_id() . '</td>
+                        <td>' . $employee->getEmail() . '</td>
+                        <td>' . $employee->getFirstname() . '</td>
+                        <td>' . $employee->getLastname() . '</td>
+                        <td>' . substr($employee->getDob(),0,10) . '</td>
+                        <td>' . $employee->getWorking_years() . '</td>
+                        <td>' . $employee->getSalary() . '</td>
+                        <td>' . $employee->getNote() . '</td>
+                        </tr>';
+            }
+            ?>
+        </tr>
+    </table>
+
+</body>
+
+</html>

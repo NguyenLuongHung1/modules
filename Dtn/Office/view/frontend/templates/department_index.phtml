@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @var \Dtn\Office\Block\Index $block
+ */
+
+
+echo $block->sayHello();
+
+?>
+
+<html>
+
+<body>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <?php
+            foreach ($block->getDepartments() as $department) {
+                echo '<tr>
+                        <td>' . $department->getId() . '</td>
+                        <td>' . $department->getName() . '</td>
+                        </tr>';
+            }
+            ?>
+        </tr>
+    </table>
+
+</body>
+
+</html>
