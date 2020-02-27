@@ -10,7 +10,7 @@
         <buttons>
             <button name="save" class="Dtn\Office\Block\Adminhtml\Department\Edit\SaveButton"/>
             <button name="reset" class="Dtn\Office\Block\Adminhtml\Department\Edit\ResetButton"/>
-            <button name="saveContinue" class="Dtn\Office\Block\Adminhtml\Department\Edit\SaveContinueButton"/>
+            <button name="save_continue" class="Dtn\Office\Block\Adminhtml\Department\Edit\SaveContinueButton"/>
             <button name="back" class="Dtn\Office\Block\Adminhtml\Department\Edit\BackButton"/>
         </buttons>
         <namespace>office_department_form</namespace>

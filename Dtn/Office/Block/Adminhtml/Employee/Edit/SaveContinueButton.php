@@ -1,6 +1,6 @@
 <?php
 
-namespace Dtn\Office\Block\Adminhtml\Department\Edit;
+namespace Dtn\Office\Block\Adminhtml\Employee\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
@@ -22,7 +22,7 @@ class SaveContinueButton extends GenericButton implements ButtonProviderInterfac
                     'buttonAdapter' => [
                         'actions' => [
                             [
-                                'targetName' => 'office_department_form.office_department_form',
+                                'targetName' => 'office_employee_form.office_employee_form',
                                 'actionName' => 'save',
                                 'params' => [
                                     true,

@@ -6,6 +6,8 @@
             <argument name="collections" xsi:type="array">
                 <item name="office_department_listing_data_source" xsi:type="string">Dtn\Office\Model\ResourceModel\Department\Grid\Collection</item>
                 <item name="department_form_data_source" xsi:type="string">Dtn\Office\Model\ResourceModel\Department\Grid\Collection</item>
+                <item name="office_employee_listing_data_source" xsi:type="string">Dtn\Office\Model\ResourceModel\Employee\Grid\Collection</item>
+                <item name="employee_form_data_source" xsi:type="string">Dtn\Office\Model\ResourceModel\Employee\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
@@ -17,4 +19,15 @@
         </arguments>
     </virtualType>
 
+    <virtualType name="Dtn\Office\Model\ResourceModel\Employee\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dtn_office_employee_entity</argument>
+            <argument name="resourceModel" xsi:type="string">Dtn\Office\Model\ResourceModel\Employee</argument>
+        </arguments>
+    </virtualType>
+
+    <!--    Plugin 
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="officePlugin" type="Dtn\Office\Block\Checkout\LayoutProcessorPlugin" disabled="false" sortOrder="100"/>
+    </type> -->
 </config>

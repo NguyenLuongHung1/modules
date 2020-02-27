@@ -1,13 +1,13 @@
 <?php
 
-namespace Dtn\Office\Block\Adminhtml\Department\Edit;
+namespace Dtn\Office\Block\Adminhtml\Employee\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class BackButton
  */
-class SaveContinueButton extends GenericButton implements ButtonProviderInterface
+class SaveButton extends GenericButton implements ButtonProviderInterface
 {
     /**
      * @return array
@@ -15,20 +15,17 @@ class SaveContinueButton extends GenericButton implements ButtonProviderInterfac
     public function getButtonData()
     {
         return [
-            'label' => __('Save and Continue Edit'),
-            'class' => 'save',
+            'label' => __('Save'),
+            'class' => 'save primary',
             'data_attribute' => [
                 'mage-init' => [
                     'buttonAdapter' => [
                         'actions' => [
                             [
-                                'targetName' => 'office_department_form.office_department_form',
+                                'targetName' => 'office_employee_form.office_employee_form',
                                 'actionName' => 'save',
                                 'params' => [
-                                    true,
-                                    [
-                                        'back' => 'continue',
-                                    ]
+                                    false
                                 ]
                             ]
                         ]

@@ -1,43 +1,49 @@
 <?php
 
-namespace Dtn\Office\Controller\Adminhtml\Department;
+namespace Dtn\Office\Controller\Adminhtml\employee;
 
 class Edit extends \Magento\Backend\App\Action
 {
     protected $resultPageFactory;
-    protected $departmentFactory;
+    protected $employeeFactory;
     protected $_coreRegistry;
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Dtn\Office\Model\DepartmentFactory $departmentFactory,
+        \Dtn\Office\Model\EmployeeFactory $employeeFactory,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\Registry $registry
     ) {
         $this->resultPageFactory = $resultPageFactory;
-        $this->departmentFactory = $departmentFactory;
+        $this->employeeFactory = $employeeFactory;
         $this->_coreRegistry = $registry;
         parent::__construct($context);
     }
 
     public function execute()
     {
-        // Get Department ID and Model
+       
+        // Get employee ID and Model
         $id = $this->getRequest()->getParam('entity_id');
-        $department = $this->departmentFactory->create();
+        $employee = $this->employeeFactory->create();
 
         if ($id) {
-            $department->load($id);
-            // die($department->getName());
-            if (!$department) {
-                $this->messageManager->addErrorMessage(__('This department no longer exists'));
+
+            $employee->load($id);
+            // die($employee->getName());
+            if (!$employee) {
+                $this->messageManager->addErrorMessage(__('This employee no longer exists'));
                 $resultRedirect = $this->resultRedirectFactory->create();
                 $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('office_department', $department);
+   
+        $this->_coreRegistry->register('office_employee', $employee);
+ 
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend($id ? __('Edit Department') : __('New Department'));
+       
+        $resultPage->getConfig()->getTitle()->prepend($id ? __('Edit Employee') : __('New Employee'));
+
         return $resultPage;
     }
 }

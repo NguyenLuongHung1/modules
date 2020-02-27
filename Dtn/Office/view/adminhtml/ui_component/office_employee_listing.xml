@@ -3,7 +3,7 @@
 
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">office_department_listing.office_department_listing_data_source</item>
+            <item name="provider" xsi:type="string">office_employee_listing.office_employee_listing_data_source</item>
         </item>
     </argument>
 
@@ -12,31 +12,31 @@
             <button name="add">
                 <url path="*/*/new"/>
                 <class>primary</class>
-                <label translate="true">Add New Department</label>
+                <label translate="true">Add New Employee</label>
             </button>
         </buttons>
-        <spinner>office_department_columns</spinner>
+        <spinner>office_employee_columns</spinner>
         <deps>
-            <dep>office_department_listing.office_department_listing_data_source</dep>
+            <dep>office_employee_listing.office_employee_listing_data_source</dep>
         </deps>
     </settings>
 
-    <dataSource name="office_department_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="office_employee_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
                 <param name="indexField" xsi:type="string">entity_id</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
-         <aclResource>Dtn_Office::department</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="office_department_listing_data_source">
+        <aclResource>Dtn_Office::employee</aclResource>
+        <dataProvider class="Dtn\Office\Ui\Component\Employee\DataProvider" name="office_employee_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
-    
+
     <listingToolbar name="listing_top">
         <settings>
             <sticky>true</sticky>
@@ -52,21 +52,21 @@
                         <message translate="true">Are you sure you want to delete selected items?</message>
                         <title translate="true">Delete items</title>
                     </confirm>
-                    <url path="office/department/massDelete"/>
+                    <url path="office/employee/massDelete"/>
                     <type>delete</type>
                     <label translate="true">Delete</label>
                 </settings>
             </action>
             <action name="disable">
                 <settings>
-                    <url path="office/department/massDisable"/>
+                    <url path="office/employee/massDisable"/>
                     <type>disable</type>
                     <label translate="true">Disable</label>
                 </settings>
             </action>
             <action name="enable">
                 <settings>
-                    <url path="office/department/massEnable"/>
+                    <url path="office/employee/massEnable"/>
                     <type>enable</type>
                     <label translate="true">Enable</label>
                 </settings>
@@ -74,7 +74,7 @@
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="office_department_columns">
+    <columns name="office_employee_columns">
         <selectionsColumn name="ids">
             <settings>
                 <indexField>entity_id</indexField>
@@ -89,18 +89,68 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="name">
+        <column name="department_id">
             <settings>
-                <filter>text</filter>
-                <label translate="true">Name</label>
+                <filter>textRange</filter>
+                <label translate="true">Department</label>
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Dtn\Office\Ui\Component\Listing\Column\DepartmentsActions">
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="firstname">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">First name</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="lastname">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Last name</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="dob">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Date Of Birth</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="working_years">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Working Years</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="salary">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Salary</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="note">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Note</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Dtn\Office\Ui\Component\Listing\Column\EmployeesActions">
             <settings>
                 <indexField>entity_id</indexField>
-                <resizeEnabled>false</resizeEnabled>
-                <resizeDefaultWidth>107</resizeDefaultWidth>
+                <resizeEnabled>true</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
             </settings>
         </actionsColumn>
     </columns>
