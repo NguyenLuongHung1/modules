@@ -48,9 +48,9 @@ class LayoutProcessorPlugin
                 'options' => [],
                 'id' => 'special-request'
             ],
-            'dataScope' => 'ordercomment.special_request',
+            'dataScope' => 'special_request',
             'label' => 'Special Request',
-            'notice' => __('Special Request'),
+            // 'notice' => __('Special Request'),
             'provider' => 'checkoutProvider',
             'visible' => true,
             'sortOrder' => 250,

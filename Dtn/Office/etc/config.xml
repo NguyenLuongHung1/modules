@@ -1,0 +1,17 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store
+:etc/config.xsd">
+    <default>
+        <carriers>
+            <shipbox>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Dtn\Office\Model\Carrier\SaveShipper</model>
+                <name>SaveShipper</name>
+                <price>4.99</price>
+                <free_price>600</free_price>
+                <title>Office SaveShipper</title>
+                <specificerrmsg>Use this shipping method for saving money</specificerrmsg>
+            </shipbox>
+        </carriers>
+    </default>
+</config>

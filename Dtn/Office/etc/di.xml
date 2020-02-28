@@ -26,8 +26,7 @@
         </arguments>
     </virtualType>
 
-    <!--    Plugin 
-    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
-        <plugin name="officePlugin" type="Dtn\Office\Block\Checkout\LayoutProcessorPlugin" disabled="false" sortOrder="100"/>
-    </type> -->
+    <type name="Magento\Checkout\Model\PaymentInformationManagement">
+        <plugin name="order_comments_save-in-order" type="Dtn\Office\Plugin\Checkout\PaymentInformationManagementPlugin" sortOrder="10"/>
+    </type>
 </config>

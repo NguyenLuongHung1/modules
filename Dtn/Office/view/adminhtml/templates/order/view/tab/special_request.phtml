@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Sales\Block\Adminhtml\Order\View\Tab\History $block */
+?>
+<section class="admin__page-section special_request">
+    <div class="special_request-block">
+        <h3>Special Request for This Order:</h3>
+        <span style="font-size: 15px"><?= $block->getOrder()->getSpecialRequest() ?></span>
+    </div>
+</section>

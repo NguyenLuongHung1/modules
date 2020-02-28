@@ -8,4 +8,5 @@ var config = {
                 'Dtn_Office/js/order/set-payment-information-mixin': true
             },
         }
-    };
+    }
+};
