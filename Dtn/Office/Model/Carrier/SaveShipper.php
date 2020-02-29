@@ -10,9 +10,10 @@ implements \Magento\Shipping\Model\Carrier\AbstractCarrierInterface
 
 
     protected $_code = 'saveshipper';
-    protected $_isFixed = true;
+    protected $_isFixed = false;
     protected $_rateResultFactory;
     protected $_rateMethodFactory;
+    protected $cart;
 
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
@@ -20,10 +21,10 @@ implements \Magento\Shipping\Model\Carrier\AbstractCarrierInterface
         \Psr\Log\LoggerInterface $logger,
         \Magento\Shipping\Model\Rate\ResultFactory $rateResultFactory,
         \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory $rateMethodFactory,
-        array $data = []
-    )
-    {
-        
+        array $data = [],
+        \Magento\Checkout\Model\CartFactory $cart
+    ) {
+        $this->cart = $cart;
         $this->_rateResultFactory = $rateResultFactory;
         $this->_rateMethodFactory = $rateMethodFactory;
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
@@ -31,29 +32,27 @@ implements \Magento\Shipping\Model\Carrier\AbstractCarrierInterface
 
     public function collectRates(RateRequest $request)
     {
+        $cart = $this->cart->create();
+
+        $subTotal = $cart->getQuote()->getSubtotalWithDiscount();
+
+        $grandTotal = $cart->getQuote()->getGrandTotal();
+
         $freePrice = $this->getConfigData('free_price');
-    
+
         $normalPrice = $this->getConfigData('price');
 
-        $shippingPrice = 0;
+        $shippingPrice = $normalPrice;
 
-        if ($this->getConfigFlag('active')) {
+        if (!$this->getConfigFlag('active')) {
             return false;
         }
-        
-        $total = 0;
-        if ($request->getAllItems()) {
-            foreach ($request->getAllItems() as $item) {
-                $qty = $item->getQty();
-                $price = $item->getPrice();
-                $total += ($qty * $price);
-            }
+
+        if ($subTotal > $freePrice) {
+            $shippingPrice = 0;
         }
 
-        if ($total < $freePrice) {
-            $shippingPrice = $normalPrice;
-        }
-
+        $shippingPrice = $shippingPrice;
         $result = $this->_rateResultFactory->create();
 
         $method = $this->_rateMethodFactory->create();
@@ -71,5 +70,10 @@ implements \Magento\Shipping\Model\Carrier\AbstractCarrierInterface
         $result->append($method);
 
         return $result;
+    }
+
+    public function getAllowedMethods()
+    {
+        return ['saveshipper' => $this->getConfigData('name')];
     }
 }

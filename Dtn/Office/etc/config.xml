@@ -2,8 +2,8 @@
 :etc/config.xsd">
     <default>
         <carriers>
-            <shipbox>
-                <active>0</active>
+            <saveshipper>
+                <active>1</active>
                 <sallowspecific>0</sallowspecific>
                 <model>Dtn\Office\Model\Carrier\SaveShipper</model>
                 <name>SaveShipper</name>
@@ -11,7 +11,7 @@
                 <free_price>600</free_price>
                 <title>Office SaveShipper</title>
                 <specificerrmsg>Use this shipping method for saving money</specificerrmsg>
-            </shipbox>
+            </saveshipper>
         </carriers>
     </default>
 </config>

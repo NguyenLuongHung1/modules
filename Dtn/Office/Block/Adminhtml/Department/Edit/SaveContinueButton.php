@@ -23,7 +23,6 @@ class SaveContinueButton extends GenericButton implements ButtonProviderInterfac
                         'actions' => [
                             [
                                 'targetName' => 'office_department_form.office_department_form',
-                                'actionName' => 'save',
                                 'params' => [
                                     true,
                                     [

@@ -26,13 +26,11 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
 
         $id = $data['entity_id'];
 
-        // var_dump($data);
-        // die();
-
         $employee = $this->employeeFactory->create();;
 
         if ($id) {
             $employee->load($id);
+
             if (!$employee) {
                 $this->messageManager->addErrorMessage(__('This Employee no longer exists'));
                 $resultRedirect->setPath('*/*/');
@@ -41,10 +39,32 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
         } else {
             $this->messageManager->addSuccessMessage(__('New Employee Created!'));
         }
+        
+        // $employee->setData([
+        //     'department_id' => $data['department_id'],
+        //     'email' => $data['email'],
+        //     'firstname' => $data['firstname'],
+        //     'lastname' => $data['lastname'],
+        //     'working_years' => $data['working_years'],
+        //     'dob' => $data['dob'],
+        //     'note' => $data['note'],
+        //     'salary' => $data['salary'],
+        // ]);
 
-        $employee->setData($data);
-
+        $employee->setDepartmentId($data['department_id']);
+        $employee->setEmail($data['email']);
+        $employee->setFirstname($data['firstname']);
+        $employee->setLastname($data['lastname']);
+        $employee->setWorkingYears($data['working_years']);
+        $employee->setDob($data['dob']);
+        $employee->setNote($data['note']);
+        $employee->setSalary($data['salary']);
+      
         $employee->save();
+
+        // var_dump($employee);
+        // die();
+
 
         if (isset($data['back'])) {
             return $resultRedirect->setPath('*/*/edit', ['entity_id' => $employee->getId()]);
